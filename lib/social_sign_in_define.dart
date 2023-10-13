@@ -1,4 +1,10 @@
 
+enum SocialPlatform {
+  apple,
+  facebook,
+  google,
+  microsoft,
+}
 
 enum SignInResultStatus {
   /// The login was successful.
