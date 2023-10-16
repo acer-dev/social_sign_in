@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'site/microsoft/microsoft_sign_in_desktop.dart';
 import 'social_sign_in.dart';
 import 'dart:io';
 import 'interface/social_sign_in_platform_interface.dart';
@@ -21,6 +22,11 @@ class SocialSignInDesktop extends SocialSignInPlatform {
         case SocialPlatform.facebook:
           if(config is FacebookSignInConfig) {
             siteInfo = FacebookSignInDesktop.fromProfile(config);
+          }
+          break;
+        case SocialPlatform.microsoft:
+          if(config is MicrosoftSignInConfig) {
+            siteInfo = MicrosoftSignInDesktop.fromProfile(config);
           }
           break;
         default:

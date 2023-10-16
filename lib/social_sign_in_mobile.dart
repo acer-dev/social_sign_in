@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'site/facebook/facebook_sign_in.dart';
 import 'site/google/google_sign_in.dart';
+import 'site/microsoft/microsoft_sign_in.dart';
 import 'social_sign_in.dart';
 import 'interface/social_sign_in_platform_interface.dart';
 
@@ -22,6 +23,11 @@ class SocialSignInMobile extends SocialSignInPlatform {
         case SocialPlatform.google:
           if(config is GoogleSignInConfig) {
             siteInfo = GoogleSignIn.fromProfile(config);
+          }
+          break;
+        case SocialPlatform.microsoft:
+          if(config is MicrosoftSignInConfig) {
+            siteInfo = MicrosoftSignIn.fromProfile(config);
           }
           break;
         default:

@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:sign_in_button/sign_in_button.dart';
 import 'package:social_sign_in/site/facebook/facebook_sign_in_config.dart';
 import 'package:social_sign_in/site/google/google_sign_in.dart';
+import 'package:social_sign_in/site/microsoft/microsoft_sign_in.dart';
 import 'package:social_sign_in/social_sign_in.dart';
 import 'package:social_sign_in_example/private_data.dart';
 
@@ -19,6 +20,11 @@ void main() {
     SocialSignIn().initialSite(GoogleSignInConfig(
       clientId: SocialPrivateData.googleClientId,
       clientSecret: SocialPrivateData.googleClientSecret,
+      redirectUrl: SocialPrivateData.simpleRedirectUrl,
+    ), null);
+    SocialSignIn().initialSite(MicrosoftSignInConfig(
+      clientId: SocialPrivateData.microsoftClientId,
+      clientSecret: SocialPrivateData.microsoftClientSecret,
       redirectUrl: SocialPrivateData.simpleRedirectUrl,
     ), null);
   }catch(e){
@@ -115,6 +121,14 @@ class _LoginPageState extends State<LoginPage> {
               onPressed: () async {
                 // Trigger the sign-in flow
                 final authResult = await SocialSignIn().signInSite(SocialPlatform.facebook, context);
+                printSignInResult(authResult);
+              },
+            ),
+            SignInButton(
+              Buttons.microsoft,
+              onPressed: () async {
+                // Trigger the sign-in flow
+                final authResult = await SocialSignIn().signInSite(SocialPlatform.microsoft, context);
                 printSignInResult(authResult);
               },
             ),
