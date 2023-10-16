@@ -16,5 +16,16 @@ part 'interface/social_sign_in_result.dart';
 
 
 class SocialSignIn {
+  SocialSignIn initialSite(SocialSignInSiteConfig profile, SocialSignInPageInfo? pageInfo){
+    SocialSignInPlatform.instance.initialSite(profile, pageInfo ?? DefaultSignInPageInfo());
+    return this;
+  }
 
+  Future<SocialSignInResultInterface> signInSite(SocialPlatform site, BuildContext context) {
+    return SocialSignInPlatform.instance.signInSite(site, context);
+  }
+
+  Future<SocialSignInResultInterface> signIn(BuildContext context) {
+    return SocialSignInPlatform.instance.signIn(context);
+  }
 }
