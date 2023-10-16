@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'site/facebook/facebook_sign_in.dart';
+import 'site/facebook/facebook_sign_in_config.dart';
 import 'social_sign_in.dart';
 import 'interface/social_sign_in_platform_interface.dart';
 
@@ -9,7 +11,17 @@ class SocialSignInMobile extends SocialSignInPlatform {
   void initialSite(SocialSignInSiteConfig config, SocialSignInPageInfo pageInfo){
     try {
       SocialSignInSite? siteInfo;
+      switch (config.site) {
+        
 
+        case SocialPlatform.facebook:
+          if(config is FacebookSignInConfig) {
+            siteInfo = FacebookSignIn.fromProfile(config);
+          }
+          break;
+        default:
+          throw Exception("Unsupported social site!");
+      }
       if(siteInfo == null){
         throw Exception("Site config miss match!");
       }
