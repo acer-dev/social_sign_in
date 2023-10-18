@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'site/microsoft/microsoft_sign_in_desktop.dart';
 import 'social_sign_in.dart';
 import 'dart:io';
 import 'interface/social_sign_in_platform_interface.dart';
 import 'site/facebook/facebook_sign_in_desktop.dart';
+import 'site/google/google_sign_in_desktop.dart';
+import 'site/microsoft/microsoft_sign_in_desktop.dart';
 
 /// An implementation of [SocialSignInPlatform] that uses method channels.
 class SocialSignInDesktop extends SocialSignInPlatform {

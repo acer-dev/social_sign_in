@@ -9,6 +9,10 @@ import 'interface/social_sign_in_platform_interface.dart';
 import 'social_sign_in_define.dart';
 
 export 'social_sign_in_define.dart';
+export 'social_sign_in_desktop.dart';
+export 'site/facebook/facebook_sign_in.dart';
+export 'site/google/google_sign_in.dart';
+export 'site/microsoft/microsoft_sign_in.dart';
 
 part 'interface/social_sign_in_site_interface.dart';
 part 'interface/social_sign_in_error.dart';
