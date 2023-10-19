@@ -11,6 +11,11 @@ import 'package:social_sign_in_example/private_data.dart';
 
 void main() {
   try {
+    SocialSignIn().initialSite(AppleSignInConfig(
+      clientId: SocialPrivateData.appleServiceId,
+      redirectUrl: SocialPrivateData.appleRedirectUrl,
+      hostUrl: SocialPrivateData.appleHostUrl,
+    ), null);
 
     SocialSignIn().initialSite(FacebookSignInConfig(
       clientId: SocialPrivateData.facebookClientId,
@@ -101,6 +106,13 @@ class _LoginPageState extends State<LoginPage> {
               child: Text("Social sign-in: $_result"),
             ),
             Text(_detail),
+            SignInButton(
+              Buttons.apple,
+              onPressed: () async {
+                final authResult = await SocialSignIn().signInSite(SocialPlatform.apple, context);
+                printSignInResult(authResult);
+              },
+            ),
 	    SignInButton(
               Buttons.google,
               onPressed: () async {

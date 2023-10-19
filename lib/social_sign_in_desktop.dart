@@ -5,6 +5,7 @@ import 'interface/social_sign_in_platform_interface.dart';
 import 'site/facebook/facebook_sign_in_desktop.dart';
 import 'site/google/google_sign_in_desktop.dart';
 import 'site/microsoft/microsoft_sign_in_desktop.dart';
+import 'site/apple/apple_sign_in_windows.dart';
 
 /// An implementation of [SocialSignInPlatform] that uses method channels.
 class SocialSignInDesktop extends SocialSignInPlatform {
@@ -19,10 +20,25 @@ class SocialSignInDesktop extends SocialSignInPlatform {
     try {
       SocialSignInSite? siteInfo;
       switch (config.site) {
-
+        case SocialPlatform.apple:
+          if(config is AppleSignInConfig) {
+            if(Platform.isMacOS){
+              siteInfo = AppleSignIn.fromProfile(config);
+            }
+            else if(Platform.isWindows) {
+              // throw UnsupportedError("Unsupported sign in with apple on windows.");
+              siteInfo = AppleSignInWindows.fromProfile(config);
+            }
+          }
+          break;
         case SocialPlatform.facebook:
           if(config is FacebookSignInConfig) {
             siteInfo = FacebookSignInDesktop.fromProfile(config);
+          }
+          break;
+        case SocialPlatform.google:
+          if(config is GoogleSignInConfig) {
+            siteInfo = GoogleSignInDesktop.fromProfile(config);
           }
           break;
         case SocialPlatform.microsoft:

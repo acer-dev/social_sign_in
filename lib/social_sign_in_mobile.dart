@@ -11,8 +11,11 @@ class SocialSignInMobile extends SocialSignInPlatform {
     try {
       SocialSignInSite? siteInfo;
       switch (config.site) {
-        
-
+        case SocialPlatform.apple:
+          if(config is AppleSignInConfig) {
+            siteInfo = AppleSignIn.fromProfile(config);
+          }
+          break;
         case SocialPlatform.facebook:
           if(config is FacebookSignInConfig) {
             siteInfo = FacebookSignIn.fromProfile(config);
