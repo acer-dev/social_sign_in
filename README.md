@@ -1,92 +1,184 @@
 # social_sign_in
 
-
+A Social Sign In Flutter project on Android, iOS, MacOS and Windows.
+Current supported social provider: 
+   Apple, Facebook, Google, Microsoft.
 
 ## Getting started
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
+Add your library to `pubspec.yaml`
+```yaml
+depedencies:
+    social_sign_in: ^0.2.6
 ```
-cd existing_repo
-git remote add origin https://it-gitlab.intra.acer.com/ChangCaty/social_sign_in.git
-git branch -M main
-git push -uf origin main
+## Site Prepare
+### Apple
+* Ref: [FlutterFire Social Authentication](https://firebase.flutter.dev/docs/auth/social/#apple)
+
+#### Native on Android
+1. Deploy an API on firebase cloud function to get **redirect URL** like: \
+   **https://<firebase_project_id>.cloudfunctions.net/callbacks_sign_in_with_apple**
+```js
+exports.callbacks_sign_in_with_apple = functions.https.onRequest(async (request, response) => {
+    const redirect = `intent://callback?${new URLSearchParams(
+      request.body
+    ).toString()}#Intent;package=${
+      "[com.your.android_package]"
+    };scheme=signinwithapple;end`;
+  
+    console.log(`Redirecting to ${redirect}`);
+  
+    response.redirect(307, redirect);
+});
+```
+2. Configure in Apple developer site setting service ids with **redirect URL** and **domain**.
+3. Modify **android/app/src/main/AndroidManifest.xml** 
+```xml
+<activity
+    android:name="com.aboutyou.dart_packages.sign_in_with_apple.SignInWithAppleCallback"
+    android:exported="true"
+>
+    <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+
+        <data android:scheme="signinwithapple" />
+        <data android:path="callback" />
+    </intent-filter>
+</activity>
 ```
 
-## Integrate with your tools
+#### Native on Windows
+1. Deploy a page on firebase hosting to get host page URL like: \
+   **https://<firebase_project_id>.firebaseapp.com/sign_in_with_apple.html**
+```html
+<html>
+    <head>
+    </head>
+    <body>
+        <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
+        <div id="appleid-signin" data-color="black" data-border="true" data-type="sign in"></div>
+        <script type="text/javascript">
+            const queryString = window.location.search;
+            const urlParams = new URLSearchParams(queryString);
+            AppleID.auth.init({
+                clientId: urlParams.get('[YOUR_APPLE_SERVER_SERVICE_ID]'),
+                redirectURI: urlParams.get('[YOUR_REDIRECT_URL]'),
+                scope: urlParams.get('scope'),
+                state: urlParams.get('state'),
+                nonce: urlParams.get('nonce')
+            });
+        </script>
+    </body>
+</html>
+```
+2. Deploy an API on firebase cloud function to get **redirect URL** like: \
+   **https://<firebase_project_id>.cloudfunctions.net/callbacks_sign_in_with_apple**
+```js
+exports.callbacks_sign_in_with_apple = functions.https.onRequest(async (request, response) => {
+    redirect = `http://localhost?${new URLSearchParams(
+        req.body
+    ).toString()}`;
+  
+    console.log(`Redirecting to ${redirect}`);
+  
+    response.redirect(307, redirect);
+});
+```
+3. Configure in Apple developer site setting service ids with **redirect URL**, **redirect domain**, and **host page domain**.
 
-- [ ] [Set up project integrations](https://it-gitlab.intra.acer.com/ChangCaty/social_sign_in/-/settings/integrations)
+### GitHub
+1. Obtain a GitHub account from [GitHub](https://github.com/).
+2. Go to User Setting, and then, in the navigation panel, click Developer Settings.
+3. In the navigation panel, click OAuth Apps, click the **New OAuth App** in primary panel.
+4. Fill table and Register application.
+5. Enter previous create app, get client id and generate client secrets.
 
-## Collaborate with your team
+### Line
+1. Obtain a Line developer account from [LINE Developers](https://developers.line.biz/)
+2. Log on the [Line devekoper console](https://developers.line.biz/console/)
+3. Click Create in Providers panel.
+4. Switch to previous create provider, in the primary panel, click **create new channel**, and then choise Line Login.
+5. Fill table to create and wait for review.
+6. Enter channel to get channel ID and Client secrets.
+7. Switch tab to LINE Login and enable **Use LINE Login in your web app** and add Callback URL.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+### Steam
+1. Obtain a Steam developer account from [Steam Community](https://steamcommunity.com/).
+2. Register an steam api key from [Registration page](https://steamcommunity.com/dev/apikey).
 
-## Test and Deploy
+### Microsoft
+* Ref: [akamai Microsoft Online social login guide](https://techdocs.akamai.com/identity-cloud/docs/the-microsoft-online-social-configuration-guide)
+* In Step 3. click Azure Active Directory, and then, in the navigation panel, click App registrations.
 
-Use the built-in continuous integration in GitLab.
+### Google
+* Ref: [FlutterFire Social Authentication](https://firebase.flutter.dev/docs/auth/social/#google)
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+### Facebook
+* Ref: [FlutterFire Social Authentication](https://firebase.flutter.dev/docs/auth/social/#google)
 
-***
+### Discord
+1. Obtain a Discord developer’ s account from [Discord Developer Portal](https://discord.com/developers).
+2. In the navigation panel, click Applications, click the **New Applications** in primary panel.
+3. Enter application, switch to OAuth2 in the navigation.
+4. Generate client secret and enter redirect URL.
 
-# Editing this README
+### Twitter
+1. Obtain a Twitter developer’ s account from [Twitter Developer Platform](https://developer.twitter.com).
+2. Create new app in Developer Portal.
+3. Switch to Keys and tokens
+4. Generate and get OAuth 2.0 Client ID and Client Secret.
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!).  Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+### Tiktok
+1. Obtain a TikTok developer’ s account from [TikTok for Developer](https://developers.tiktok.com/).
+2. Click Manage apps in the top.
+3. Enter data in primary panel.
+4. Add Product **Login Kit** and **TikTok API**.
+5. Save changes and submit for review.
+6. Wait for review.
 
 ## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+### Setup
+* Import it in your code.
+```dart
+import 'package:social_sign_in/social_sign_in.dart';
+```
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+### Login
+* Configure site information and trigger.
+```dart
+SocialSignIn().initialSite(GitHubSignInConfig(
+    clientId: [YOUR GITHUB CLIENT ID],
+    clientSecret: [YOUR GITHUB CLIENT SECRET],
+    redirectUrl: [YOUR APP SERVER SIDE],
+), DefaultSignInPageInfo(
+    title: "Login with GitHub",
+    centerTitle: true,
+    clearCache: true
+));
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+OutlinedButton(
+    onPressed: () async {
+        final authResult = await SocialSignIn().signInSite(SocialPlatform.gitHub, context);
+    },
+    child: const Text('Login with github')
+),
+```
+* Configure and direct login. 
+```dart
+OutlinedButton(
+    onPressed: () async {
+        SocialSignIn()
+        ..initialSite(GoogleSignInConfig(
+            clientId: [YOUR GOOGLE CLIENT ID],
+            clientSecret: [YOUR GOOGLE CLIENT SECRET],
+            redirectUrl: [YOUR APP SERVER SIDE],
+        ), null)
+        ..signIn(context).then((authResult) => {
+            
+        });
+    },
+    child: const Text('Login with Google')
+),
+```
