@@ -28,4 +28,4 @@ migrate_working_dir/
 .dart_tool/
 .packages
 build/
-private_data.dart
+.private_data.dart
