@@ -9,7 +9,7 @@ Current supported social provider:
 Add your library to `pubspec.yaml`
 ```yaml
 depedencies:
-    social_sign_in: ^0.2.6
+    social_sign_in: ^0.0.1
 ```
 ## Site Prepare
 ### Apple
@@ -88,25 +88,6 @@ exports.callbacks_sign_in_with_apple = functions.https.onRequest(async (request,
 ```
 3. Configure in Apple developer site setting service ids with **redirect URL**, **redirect domain**, and **host page domain**.
 
-### GitHub
-1. Obtain a GitHub account from [GitHub](https://github.com/).
-2. Go to User Setting, and then, in the navigation panel, click Developer Settings.
-3. In the navigation panel, click OAuth Apps, click the **New OAuth App** in primary panel.
-4. Fill table and Register application.
-5. Enter previous create app, get client id and generate client secrets.
-
-### Line
-1. Obtain a Line developer account from [LINE Developers](https://developers.line.biz/)
-2. Log on the [Line devekoper console](https://developers.line.biz/console/)
-3. Click Create in Providers panel.
-4. Switch to previous create provider, in the primary panel, click **create new channel**, and then choise Line Login.
-5. Fill table to create and wait for review.
-6. Enter channel to get channel ID and Client secrets.
-7. Switch tab to LINE Login and enable **Use LINE Login in your web app** and add Callback URL.
-
-### Steam
-1. Obtain a Steam developer account from [Steam Community](https://steamcommunity.com/).
-2. Register an steam api key from [Registration page](https://steamcommunity.com/dev/apikey).
 
 ### Microsoft
 * Ref: [akamai Microsoft Online social login guide](https://techdocs.akamai.com/identity-cloud/docs/the-microsoft-online-social-configuration-guide)
@@ -118,25 +99,7 @@ exports.callbacks_sign_in_with_apple = functions.https.onRequest(async (request,
 ### Facebook
 * Ref: [FlutterFire Social Authentication](https://firebase.flutter.dev/docs/auth/social/#google)
 
-### Discord
-1. Obtain a Discord developer’ s account from [Discord Developer Portal](https://discord.com/developers).
-2. In the navigation panel, click Applications, click the **New Applications** in primary panel.
-3. Enter application, switch to OAuth2 in the navigation.
-4. Generate client secret and enter redirect URL.
 
-### Twitter
-1. Obtain a Twitter developer’ s account from [Twitter Developer Platform](https://developer.twitter.com).
-2. Create new app in Developer Portal.
-3. Switch to Keys and tokens
-4. Generate and get OAuth 2.0 Client ID and Client Secret.
-
-### Tiktok
-1. Obtain a TikTok developer’ s account from [TikTok for Developer](https://developers.tiktok.com/).
-2. Click Manage apps in the top.
-3. Enter data in primary panel.
-4. Add Product **Login Kit** and **TikTok API**.
-5. Save changes and submit for review.
-6. Wait for review.
 
 ## Usage
 ### Setup
