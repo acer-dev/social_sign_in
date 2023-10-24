@@ -45,6 +45,10 @@ flutter:
         dartPluginClass: SocialSignInDesktop
       macos:
         dartPluginClass: SocialSignInDesktop
+      ios:
+        dartPluginClass: SocialSignInMobile
+      android:
+        dartPluginClass: SocialSignInMobile
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:
@@ -76,8 +80,3 @@ flutter:
   #
   # For details regarding fonts in packages, see
   # https://flutter.dev/custom-fonts/#from-packages
-  platforms:
-    android:
-    ios:
-    macos:
-    windows:
