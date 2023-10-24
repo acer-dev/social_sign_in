@@ -76,3 +76,8 @@ flutter:
   #
   # For details regarding fonts in packages, see
   # https://flutter.dev/custom-fonts/#from-packages
+  platforms:
+    android:
+    ios:
+    macos:
+    windows:
