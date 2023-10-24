@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../../social_sign_in.dart';
 import '../../webView/social_sign_in_page_desktop.dart';
-
 export 'apple_sign_in_result.dart';
 export 'apple_sign_in_config.dart';
 

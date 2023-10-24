@@ -1,12 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
-
 import '../../social_sign_in.dart';
-
 export 'apple_sign_in_result.dart';
 export 'apple_sign_in_config.dart';
 

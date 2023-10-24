@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../../webView/social_sign_in_page_desktop.dart';
 import 'microsoft_sign_in.dart';
-
 export 'microsoft_sign_in_result.dart';
 export 'microsoft_sign_in_config.dart';
 

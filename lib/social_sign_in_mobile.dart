@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'social_sign_in.dart';
-
 import 'interface/social_sign_in_platform_interface.dart';
 
 /// An implementation of [SocialSignInPlatform] that uses method channels.

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../../webView/social_sign_in_page_desktop.dart';
 import 'facebook_sign_in.dart';
-
 export 'facebook_sign_in_result.dart';
 export 'facebook_sign_in_config.dart';
 

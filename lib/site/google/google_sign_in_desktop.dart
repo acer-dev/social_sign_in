@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../../webView/social_sign_in_page_desktop.dart';
 import 'google_sign_in.dart';
-
 export 'google_sign_in_result.dart';
 export 'google_sign_in_config.dart';
 
