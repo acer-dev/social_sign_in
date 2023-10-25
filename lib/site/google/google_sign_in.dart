@@ -6,7 +6,6 @@ import '../../webView/social_sign_in_page_mobile.dart';
 export 'google_sign_in_result.dart';
 export 'google_sign_in_config.dart';
 
-
 class GoogleSignIn extends SocialSignInSite {
   @override
   String clientId;
@@ -20,10 +19,8 @@ class GoogleSignIn extends SocialSignInSite {
   @override
   SocialSignInPageInfo pageInfo = DefaultSignInPageInfo();
 
-  final String _authorizedUrl =
-      "https://accounts.google.com/o/oauth2/v2/auth";
-  final String _accessTokenUrl =
-      "https://www.googleapis.com/oauth2/v3/token";
+  final String _authorizedUrl = "https://accounts.google.com/o/oauth2/v2/auth";
+  final String _accessTokenUrl = "https://www.googleapis.com/oauth2/v3/token";
 
   GoogleSignIn({
     required this.clientId,
@@ -38,44 +35,43 @@ class GoogleSignIn extends SocialSignInSite {
   }
 
   @override
-  Future<dynamic> signInWithWebView(BuildContext context) async{
+  Future<dynamic> signInWithWebView(BuildContext context) async {
     bool isFinish = false;
 
     return await Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) =>
-            SocialSignInPageMobile(
-              url: authUrl(),
-              redirectUrl: redirectUrl,
-              userAgent: pageInfo.userAgent ?? "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.88 Mobile Safari/537.36",
-              clearCache: pageInfo.clearCache,
-              title: pageInfo.title,
-              centerTitle: pageInfo.centerTitle,
-              onPageFinished: (String url) {
-                if(isFinish) return;
-                if (url.contains("error=")) {
-                  Navigator.of(context).pop(
-                    Exception(Uri
-                        .parse(url)
-                        .queryParameters["error"]),
-                  );
-                } else if (url.startsWith(redirectUrl)) {
-                  var uri = Uri.parse(url);
-                  if(uri.queryParameters.containsKey('code') &&
-                      uri.queryParameters.containsKey('state') &&
-                      uri.queryParameters['state'] == stateCode){
-                    isFinish = true;
-                    Navigator.of(context).pop(uri.queryParameters["code"]);
-                  }
-                }
-              },
-            ),
+        builder: (context) => SocialSignInPageMobile(
+          url: authUrl(),
+          redirectUrl: redirectUrl,
+          userAgent: pageInfo.userAgent ??
+              "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.88 Mobile Safari/537.36",
+          clearCache: pageInfo.clearCache,
+          title: pageInfo.title,
+          centerTitle: pageInfo.centerTitle,
+          onPageFinished: (String url) {
+            if (isFinish) return;
+            if (url.contains("error=")) {
+              Navigator.of(context).pop(
+                Exception(Uri.parse(url).queryParameters["error"]),
+              );
+            } else if (url.startsWith(redirectUrl)) {
+              var uri = Uri.parse(url);
+              if (uri.queryParameters.containsKey('code') &&
+                  uri.queryParameters.containsKey('state') &&
+                  uri.queryParameters['state'] == stateCode) {
+                isFinish = true;
+                Navigator.of(context).pop(uri.queryParameters["code"]);
+              }
+            }
+          },
+        ),
       ),
     );
   }
 
   @override
-  Future<SocialSignInResultInterface> exchangeAccessToken(String authorizationCode) async{
+  Future<SocialSignInResultInterface> exchangeAccessToken(
+      String authorizationCode) async {
     var response = await http.post(
       Uri.parse(_accessTokenUrl),
       headers: {"Content-Type": "application/x-www-form-urlencoded"},
@@ -89,8 +85,9 @@ class GoogleSignIn extends SocialSignInSite {
     );
 
     if (response.statusCode == 200) {
-      var body = json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
-      if(body.containsKey("access_token")) {
+      var body =
+          json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+      if (body.containsKey("access_token")) {
         return GoogleSignInResult(
           SignInResultStatus.ok,
           accessToken: body["access_token"],
@@ -105,12 +102,12 @@ class GoogleSignIn extends SocialSignInSite {
     }
   }
 
-  factory GoogleSignIn.fromProfile(GoogleSignInConfig config){
+  factory GoogleSignIn.fromProfile(GoogleSignInConfig config) {
     return GoogleSignIn(
-      clientId: config.clientId,
-      clientSecret: config.clientSecret,
-      redirectUrl: config.redirectUrl,
-      scope: config.scope.isNotEmpty ? config.scope.join(" ") : "profile email"
-    );
+        clientId: config.clientId,
+        clientSecret: config.clientSecret,
+        redirectUrl: config.redirectUrl,
+        scope:
+            config.scope.isNotEmpty ? config.scope.join(" ") : "profile email");
   }
 }

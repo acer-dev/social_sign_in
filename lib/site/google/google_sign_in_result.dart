@@ -1,8 +1,8 @@
 import '../../social_sign_in.dart';
 
-class GoogleSignInResult extends SocialSignInResultInterface{
-
-  GoogleSignInResult(this.status, {
+class GoogleSignInResult extends SocialSignInResultInterface {
+  GoogleSignInResult(
+    this.status, {
     this.accessToken = "",
     this.idToken = "",
     this.errorMessage = "",

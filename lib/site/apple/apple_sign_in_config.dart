@@ -1,6 +1,6 @@
 import '../../social_sign_in.dart';
 
-class AppleSignInConfig extends SocialSignInSiteConfig{
+class AppleSignInConfig extends SocialSignInSiteConfig {
   @override
   SocialPlatform get site => SocialPlatform.apple;
 
@@ -23,6 +23,6 @@ class AppleSignInConfig extends SocialSignInSiteConfig{
     required this.clientId,
     required this.redirectUrl,
     this.hostUrl = "",
-    this.scope = const["name","email"],
+    this.scope = const ["name", "email"],
   });
 }

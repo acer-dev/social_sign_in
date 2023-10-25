@@ -1,6 +1,6 @@
 import '../../social_sign_in.dart';
 
-class GoogleSignInConfig extends SocialSignInSiteConfig{
+class GoogleSignInConfig extends SocialSignInSiteConfig {
   @override
   SocialPlatform get site => SocialPlatform.google;
 
@@ -16,11 +16,9 @@ class GoogleSignInConfig extends SocialSignInSiteConfig{
   @override
   List<String> scope;
 
-  GoogleSignInConfig({
-    required this.clientId,
-    required this.clientSecret,
-    required this.redirectUrl,
-    this.scope = const["profile","email"]
-  });
-
+  GoogleSignInConfig(
+      {required this.clientId,
+      required this.clientSecret,
+      required this.redirectUrl,
+      this.scope = const ["profile", "email"]});
 }

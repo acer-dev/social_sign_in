@@ -1,6 +1,6 @@
 import '../../social_sign_in.dart';
 
-class MicrosoftSignInConfig extends SocialSignInSiteConfig{
+class MicrosoftSignInConfig extends SocialSignInSiteConfig {
   @override
   SocialPlatform get site => SocialPlatform.microsoft;
 
@@ -16,11 +16,9 @@ class MicrosoftSignInConfig extends SocialSignInSiteConfig{
   @override
   List<String> scope;
 
-  MicrosoftSignInConfig({
-    required this.clientId,
-    required this.clientSecret,
-    required this.redirectUrl,
-    this.scope = const["user.read"]
-  });
-
+  MicrosoftSignInConfig(
+      {required this.clientId,
+      required this.clientSecret,
+      required this.redirectUrl,
+      this.scope = const ["user.read"]});
 }

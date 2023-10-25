@@ -10,16 +10,16 @@ class SocialSignInPageMobile extends StatefulWidget {
   final String? userAgent;
   final void Function(String) onPageFinished;
 
-  const SocialSignInPageMobile(
-      {Key? key,
-        required this.url,
-        required this.redirectUrl,
-        required this.onPageFinished,
-        this.userAgent,
-        this.clearCache = true,
-        this.title = "",
-        this.centerTitle, })
-      : super(key: key);
+  const SocialSignInPageMobile({
+    Key? key,
+    required this.url,
+    required this.redirectUrl,
+    required this.onPageFinished,
+    this.userAgent,
+    this.clearCache = true,
+    this.title = "",
+    this.centerTitle,
+  }) : super(key: key);
 
   @override
   State createState() => _SocialSignInPageMobileState();
@@ -44,7 +44,7 @@ class _SocialSignInPageMobileState extends State<SocialSignInPageMobile> {
           onProgress: (int progress) {},
           onPageStarted: (String url) {},
           onPageFinished: (String url) {
-            if(!mounted) return;
+            if (!mounted) return;
             widget.onPageFinished(url);
           },
           onWebResourceError: (WebResourceError error) {},
@@ -56,14 +56,13 @@ class _SocialSignInPageMobileState extends State<SocialSignInPageMobile> {
       ..loadRequest(Uri.parse(widget.url));
 
     return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-          centerTitle: widget.centerTitle,
-        ),
-        body: WebViewWidget(controller: controller),
-      )
-    );
+        child: Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+        centerTitle: widget.centerTitle,
+      ),
+      body: WebViewWidget(controller: controller),
+    ));
   }
 
   @override

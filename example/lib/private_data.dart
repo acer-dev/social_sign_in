@@ -16,5 +16,4 @@ class SocialPrivateData {
   static String facebookClientSecret = '';
   static String googleClientId = '';
   static String googleClientSecret = '';
-
 }

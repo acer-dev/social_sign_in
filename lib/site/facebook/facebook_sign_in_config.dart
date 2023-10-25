@@ -1,6 +1,6 @@
 import '../../social_sign_in.dart';
 
-class FacebookSignInConfig extends SocialSignInSiteConfig{
+class FacebookSignInConfig extends SocialSignInSiteConfig {
   @override
   SocialPlatform get site => SocialPlatform.facebook;
 
@@ -20,7 +20,6 @@ class FacebookSignInConfig extends SocialSignInSiteConfig{
     required this.clientId,
     required this.clientSecret,
     required this.redirectUrl,
-    this.scope = const["email","public_profile"],
+    this.scope = const ["email", "public_profile"],
   });
-
 }

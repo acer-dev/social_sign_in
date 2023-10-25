@@ -1,8 +1,8 @@
 import '../../social_sign_in.dart';
 
-class AppleSignInResult extends SocialSignInResultInterface{
-
-  AppleSignInResult(this.status, {
+class AppleSignInResult extends SocialSignInResultInterface {
+  AppleSignInResult(
+    this.status, {
     this.idToken = "",
     this.state = "",
     this.nonce = "",

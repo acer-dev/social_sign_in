@@ -5,7 +5,7 @@ import 'package:social_sign_in/interface/social_sign_in_platform_interface.dart'
 import 'package:social_sign_in/social_sign_in_mobile.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-class MockSocialSignInResult implements SocialSignInResultInterface{
+class MockSocialSignInResult implements SocialSignInResultInterface {
   @override
   String accessToken = 'accessToken';
 
@@ -22,7 +22,7 @@ class MockSocialSignInResult implements SocialSignInResultInterface{
   String state = '';
 }
 
-class MockSocialSignInSiteConfig implements SocialSignInSiteConfig{
+class MockSocialSignInSiteConfig implements SocialSignInSiteConfig {
   @override
   SocialPlatform get site {
     throw UnimplementedError();
@@ -38,18 +38,20 @@ class MockSocialSignInSiteConfig implements SocialSignInSiteConfig{
   String redirectUrl = '';
 
   @override
-  List<String> scope = const[];
+  List<String> scope = const [];
 }
 
 class MockSocialSignInPlatform
     with MockPlatformInterfaceMixin
     implements SocialSignInPlatform {
+  @override
+  SocialSignInPlatform initialSite(
+          SocialSignInSiteConfig profile, SocialSignInPageInfo pageInfo) =>
+      this;
 
   @override
-  SocialSignInPlatform initialSite(SocialSignInSiteConfig profile, SocialSignInPageInfo pageInfo) => this;
-
-  @override
-  Future<SocialSignInResultInterface> signInSite(SocialPlatform site, BuildContext context) {
+  Future<SocialSignInResultInterface> signInSite(
+      SocialPlatform site, BuildContext context) {
     return Future.value(MockSocialSignInResult());
   }
 

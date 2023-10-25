@@ -5,7 +5,6 @@ export 'microsoft_sign_in_result.dart';
 export 'microsoft_sign_in_config.dart';
 
 class MicrosoftSignInDesktop extends MicrosoftSignIn {
-
   MicrosoftSignInDesktop({
     required super.clientId,
     required super.clientSecret,
@@ -14,43 +13,42 @@ class MicrosoftSignInDesktop extends MicrosoftSignIn {
   });
 
   @override
-  Future<dynamic> signInWithWebView(BuildContext context) async{
+  Future<dynamic> signInWithWebView(BuildContext context) async {
     return await Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) =>
-            SocialSignInPageDesktop(
-              url: authUrl(),
-              redirectUrl: redirectUrl,
-              userAgent: pageInfo.userAgent,
-              title: pageInfo.title,
-              centerTitle: pageInfo.centerTitle,
-              onPageFinished: (String url) {
-                if (url.contains("error=")) {
-                  throw Exception(Uri
-                        .parse(url)
-                        .queryParameters["error"]);
-                } else if (url.startsWith(redirectUrl)) {
-                  var uri = Uri.parse(url);
-                  if(uri.queryParameters.containsKey('code') &&
-                      uri.queryParameters.containsKey('state') &&
-                      uri.queryParameters['state'] == stateCode){
-                    return uri.queryParameters["code"];
-                  }
-                  return "";
-                }
-                return null;
-              },
-            ),
+        builder: (context) => SocialSignInPageDesktop(
+          url: authUrl(),
+          redirectUrl: redirectUrl,
+          userAgent: pageInfo.userAgent,
+          title: pageInfo.title,
+          centerTitle: pageInfo.centerTitle,
+          onPageFinished: (String url) {
+            if (url.contains("error=")) {
+              throw Exception(Uri.parse(url).queryParameters["error"]);
+            } else if (url.startsWith(redirectUrl)) {
+              var uri = Uri.parse(url);
+              if (uri.queryParameters.containsKey('code') &&
+                  uri.queryParameters.containsKey('state') &&
+                  uri.queryParameters['state'] == stateCode) {
+                return uri.queryParameters["code"];
+              }
+              return "";
+            }
+            return null;
+          },
+        ),
       ),
     );
   }
 
-  factory MicrosoftSignInDesktop.fromProfile(MicrosoftSignInConfig config){
+  factory MicrosoftSignInDesktop.fromProfile(MicrosoftSignInConfig config) {
     return MicrosoftSignInDesktop(
       clientId: config.clientId,
       clientSecret: config.clientSecret,
       redirectUrl: config.redirectUrl,
-      scope: config.scope.isNotEmpty ? config.scope.join(" ") : "profile openid email",
+      scope: config.scope.isNotEmpty
+          ? config.scope.join(" ")
+          : "profile openid email",
     );
   }
 }

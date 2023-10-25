@@ -1,4 +1,3 @@
-
 enum SocialPlatform {
   apple,
   facebook,

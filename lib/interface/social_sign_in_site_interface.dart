@@ -13,8 +13,7 @@ String _getRandomString(int length, String charset) {
       .join();
 }
 
-class DefaultSignInPageInfo extends SocialSignInPageInfo{
-
+class DefaultSignInPageInfo extends SocialSignInPageInfo {
   @override
   String title;
   @override
@@ -72,19 +71,25 @@ abstract class SocialSignInSite {
 
   String? customStateCode() => null;
   String authUrl();
-  String generateString([int length = 32, String charset = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890']) => _getRandomString(length, charset);
-  String generateNonce([int length = 32]) => _getRandomString(length, '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._');
+  String generateString(
+          [int length = 32,
+          String charset =
+              'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890']) =>
+      _getRandomString(length, charset);
+  String generateNonce([int length = 32]) => _getRandomString(length,
+      '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._');
 
-  Future<dynamic> signInWithWebView(BuildContext context) async{
+  Future<dynamic> signInWithWebView(BuildContext context) async {
     throw UnimplementedError('signInWithWebView() has not been implemented.');
   }
 
-  Future<SocialSignInResultInterface> exchangeAccessToken(String authorizationCode) async{
+  Future<SocialSignInResultInterface> exchangeAccessToken(
+      String authorizationCode) async {
     throw UnimplementedError('exchangeAccessToken() has not been implemented.');
   }
 
   Future<SocialSignInResultInterface> signIn(BuildContext context) async {
-    stateCode = customStateCode() ?? generateString(10);// simple state code
+    stateCode = customStateCode() ?? generateString(10); // simple state code
     debugPrint("stateCode = $stateCode");
     // Default signIn with webView flow
     var authorizedResult = await signInWithWebView(context);
@@ -92,8 +97,7 @@ abstract class SocialSignInSite {
         authorizedResult.toString().contains('access_denied')) {
       throw SocialSignInException(
           status: SignInResultStatus.cancelled,
-          description: "Sign In attempt has been cancelled."
-      );
+          description: "Sign In attempt has been cancelled.");
     } else if (authorizedResult is Exception) {
       throw SocialSignInException(description: authorizedResult.toString());
     }
@@ -102,31 +106,27 @@ abstract class SocialSignInSite {
     return await exchangeAccessToken(authorizedCode);
   }
 
-  Exception handleResponseBodyFail(Map<String, dynamic> body){
-    if(body.containsKey("error")){
+  Exception handleResponseBodyFail(Map<String, dynamic> body) {
+    if (body.containsKey("error")) {
       return SocialSignInException(
-          description: "Unable to obtain token. Received: ${body["error_description"]}"
-      );
-    }
-    else {
-      return SocialSignInException(
-          description: "Unknown fail"
-      );
+          description:
+              "Unable to obtain token. Received: ${body["error_description"]}");
+    } else {
+      return SocialSignInException(description: "Unknown fail");
     }
   }
 
-  Exception handleUnSuccessCodeFail(Response response){
-    var body = json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
-    if(body.containsKey("error")){
+  Exception handleUnSuccessCodeFail(Response response) {
+    var body =
+        json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+    if (body.containsKey("error")) {
       return SocialSignInException(
-          description: "Unable to obtain token. Received: ${body["error_description"]}"
-      );
-    }
-    else {
+          description:
+              "Unable to obtain token. Received: ${body["error_description"]}");
+    } else {
       return SocialSignInException(
-          description: "Unable to obtain token. Received: ${response.statusCode}"
-      );
+          description:
+              "Unable to obtain token. Received: ${response.statusCode}");
     }
   }
-
 }

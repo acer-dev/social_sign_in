@@ -1,8 +1,8 @@
 import '../../social_sign_in.dart';
 
-class FacebookSignInResult extends SocialSignInResultInterface{
-
-  FacebookSignInResult(this.status, {
+class FacebookSignInResult extends SocialSignInResultInterface {
+  FacebookSignInResult(
+    this.status, {
     this.accessToken = "",
     this.idToken = "",
     this.state = "",

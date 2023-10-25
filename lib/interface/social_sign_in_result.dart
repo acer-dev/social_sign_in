@@ -1,8 +1,8 @@
 part of 'package:social_sign_in/social_sign_in.dart';
 
-class SocialSignInResult extends SocialSignInResultInterface{
-
-  SocialSignInResult(this.status, {
+class SocialSignInResult extends SocialSignInResultInterface {
+  SocialSignInResult(
+    this.status, {
     this.accessToken = "",
   });
 
@@ -22,8 +22,7 @@ class SocialSignInResult extends SocialSignInResultInterface{
   SignInResultStatus status;
 }
 
-class SocialSignInFail extends SocialSignInResultInterface{
-
+class SocialSignInFail extends SocialSignInResultInterface {
   SocialSignInFail({
     this.status = SignInResultStatus.failed,
     this.accessToken = "",

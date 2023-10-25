@@ -1,8 +1,8 @@
 import '../../social_sign_in.dart';
 
-class MicrosoftSignInResult extends SocialSignInResultInterface{
-
-  MicrosoftSignInResult(this.status, {
+class MicrosoftSignInResult extends SocialSignInResultInterface {
+  MicrosoftSignInResult(
+    this.status, {
     this.accessToken = "",
     this.idToken = "",
     this.errorMessage = "",

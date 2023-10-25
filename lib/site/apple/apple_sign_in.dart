@@ -17,17 +17,13 @@ class AppleSignIn extends SocialSignInSite {
   @override
   String scope = "";
 
-
   final List<AppleIDAuthorizationScopes> scopes = [];
 
   @override
   SocialSignInPageInfo pageInfo = DefaultSignInPageInfo();
 
-  AppleSignIn({
-    required this.clientId,
-    required this.redirectUrl,
-    this.scope = ""
-  });
+  AppleSignIn(
+      {required this.clientId, required this.redirectUrl, this.scope = ""});
 
   @override
   String authUrl() {
@@ -40,18 +36,15 @@ class AppleSignIn extends SocialSignInSite {
     return digest.toString();
   }
 
-  String buildState({int p = 0}){
-    final jsonState = json.encode({
-      "c":stateCode,
-      "p":p
-    });
+  String buildState({int p = 0}) {
+    final jsonState = json.encode({"c": stateCode, "p": p});
     final bytes = utf8.encode(jsonState);
     return base64.encode(bytes);
   }
 
   @override
   Future<SocialSignInResultInterface> signIn(BuildContext context) async {
-    stateCode = generateString(10);// simple state code
+    stateCode = generateString(10); // simple state code
     final rawNonce = generateNonce();
     final nonce = sha256ofString(rawNonce);
 
@@ -60,37 +53,36 @@ class AppleSignIn extends SocialSignInSite {
       scopes: scopes,
       nonce: nonce,
       state: buildState(),
-      webAuthenticationOptions: Platform.isAndroid ? WebAuthenticationOptions(
-        clientId: clientId,
-        redirectUri: Uri.parse(redirectUrl),
-      ) : null,
+      webAuthenticationOptions: Platform.isAndroid
+          ? WebAuthenticationOptions(
+              clientId: clientId,
+              redirectUri: Uri.parse(redirectUrl),
+            )
+          : null,
     );
 
-    if(appleCredential.identityToken != null){
-      return AppleSignInResult(
-          SignInResultStatus.ok,
+    if (appleCredential.identityToken != null) {
+      return AppleSignInResult(SignInResultStatus.ok,
           state: stateCode,
           nonce: rawNonce,
-          idToken: appleCredential.identityToken!
-      );
-    }
-    else{
+          idToken: appleCredential.identityToken!);
+    } else {
       return AppleSignInResult(
-          SignInResultStatus.cancelled,
+        SignInResultStatus.cancelled,
       );
     }
   }
 
-  factory AppleSignIn.fromProfile(AppleSignInConfig config){
+  factory AppleSignIn.fromProfile(AppleSignInConfig config) {
     var appleSignIn = AppleSignIn(
       clientId: config.clientId,
       redirectUrl: config.redirectUrl,
       scope: config.scope.isNotEmpty ? config.scope.join(" ") : "name email",
     );
-    for(var scope in config.scope){
-      if(scope == "email"){
+    for (var scope in config.scope) {
+      if (scope == "email") {
         appleSignIn.scopes.add(AppleIDAuthorizationScopes.email);
-      }else if(scope == "name"){
+      } else if (scope == "name") {
         appleSignIn.scopes.add(AppleIDAuthorizationScopes.fullName);
       }
     }

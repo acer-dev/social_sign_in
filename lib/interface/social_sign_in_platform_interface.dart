@@ -18,11 +18,13 @@ abstract class SocialSignInPlatform extends PlatformInterface {
   static SocialSignInPlatform get instance => _instance;
 
   static final Map<SocialPlatform, SocialSignInSite> _siteList = {};
+
   ///
   ///
   ///
-  static SocialSignInSite? getSite (SocialPlatform site) => _siteList[site];
-  static void setSite(SocialPlatform site, SocialSignInSite data) => _siteList[site] = data;
+  static SocialSignInSite? getSite(SocialPlatform site) => _siteList[site];
+  static void setSite(SocialPlatform site, SocialSignInSite data) =>
+      _siteList[site] = data;
 
   static SocialSignInSite? lastSite;
 
@@ -34,28 +36,27 @@ abstract class SocialSignInPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<SocialSignInResultInterface> signInSite(SocialPlatform site, BuildContext context) async {
+  Future<SocialSignInResultInterface> signInSite(
+      SocialPlatform site, BuildContext context) async {
     throw UnimplementedError('signIn() has not been implemented.');
   }
 
   Future<SocialSignInResultInterface> signIn(BuildContext context) async {
     try {
-      if(lastSite == null) return SocialSignInFail(errorMessage: "Uninitialized site");
+      if (lastSite == null)
+        return SocialSignInFail(errorMessage: "Uninitialized site");
       return await lastSite!.signIn(context);
-    }catch (e){
-      if(e is SocialSignInException){
-        return SocialSignInFail(
-            status: e.status,
-            errorMessage: e.description
-        );
-      }
-      else {
+    } catch (e) {
+      if (e is SocialSignInException) {
+        return SocialSignInFail(status: e.status, errorMessage: e.description);
+      } else {
         return SocialSignInFail(errorMessage: e.toString());
       }
     }
   }
 
-  void initialSite(SocialSignInSiteConfig config, SocialSignInPageInfo pageInfo){
+  void initialSite(
+      SocialSignInSiteConfig config, SocialSignInPageInfo pageInfo) {
     throw UnimplementedError('initialSite() has not been implemented.');
   }
 }

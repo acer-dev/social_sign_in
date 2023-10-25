@@ -6,7 +6,7 @@ import '../../webView/social_sign_in_page_mobile.dart';
 export 'microsoft_sign_in_result.dart';
 export 'microsoft_sign_in_config.dart';
 
-class MicrosoftSignIn extends SocialSignInSite{
+class MicrosoftSignIn extends SocialSignInSite {
   @override
   String clientId;
 
@@ -40,45 +40,43 @@ class MicrosoftSignIn extends SocialSignInSite{
   }
 
   @override
-  Future<dynamic> signInWithWebView(BuildContext context) async{
+  Future<dynamic> signInWithWebView(BuildContext context) async {
     bool isFinish = false;
 
     return await Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) =>
-            SocialSignInPageMobile(
-              url: authUrl(),
-              redirectUrl: redirectUrl,
-              userAgent: pageInfo.userAgent,
-              clearCache: pageInfo.clearCache,
-              title: pageInfo.title,
-              centerTitle: pageInfo.centerTitle,
-              onPageFinished: (String url) {
-                if(isFinish) return;
-                debugPrint(url);
-                if (url.contains("error=")) {
-                  Navigator.of(context).pop(
-                    Exception(Uri
-                        .parse(url)
-                        .queryParameters["error"]),
-                  );
-                } else if (url.startsWith(redirectUrl)) {
-                  var uri = Uri.parse(url);
-                  if(uri.queryParameters.containsKey('code') &&
-                      uri.queryParameters.containsKey('state') &&
-                      uri.queryParameters['state'] == stateCode){
-                    isFinish = true;
-                    Navigator.of(context).pop(uri.queryParameters["code"]);
-                  }
-                }
-              },
-            ),
+        builder: (context) => SocialSignInPageMobile(
+          url: authUrl(),
+          redirectUrl: redirectUrl,
+          userAgent: pageInfo.userAgent,
+          clearCache: pageInfo.clearCache,
+          title: pageInfo.title,
+          centerTitle: pageInfo.centerTitle,
+          onPageFinished: (String url) {
+            if (isFinish) return;
+            debugPrint(url);
+            if (url.contains("error=")) {
+              Navigator.of(context).pop(
+                Exception(Uri.parse(url).queryParameters["error"]),
+              );
+            } else if (url.startsWith(redirectUrl)) {
+              var uri = Uri.parse(url);
+              if (uri.queryParameters.containsKey('code') &&
+                  uri.queryParameters.containsKey('state') &&
+                  uri.queryParameters['state'] == stateCode) {
+                isFinish = true;
+                Navigator.of(context).pop(uri.queryParameters["code"]);
+              }
+            }
+          },
+        ),
       ),
     );
   }
 
   @override
-  Future<SocialSignInResultInterface> exchangeAccessToken(String authorizationCode) async{
+  Future<SocialSignInResultInterface> exchangeAccessToken(
+      String authorizationCode) async {
     var response = await http.post(
       Uri.parse(_accessTokenUrl),
       headers: {"Content-Type": "application/x-www-form-urlencoded"},
@@ -92,8 +90,9 @@ class MicrosoftSignIn extends SocialSignInSite{
     );
 
     if (response.statusCode == 200) {
-      var body = json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
-      if(body.containsKey("access_token")) {
+      var body =
+          json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+      if (body.containsKey("access_token")) {
         return MicrosoftSignInResult(
           SignInResultStatus.ok,
           accessToken: body["access_token"],
@@ -107,7 +106,7 @@ class MicrosoftSignIn extends SocialSignInSite{
     }
   }
 
-  factory MicrosoftSignIn.fromProfile(MicrosoftSignInConfig config){
+  factory MicrosoftSignIn.fromProfile(MicrosoftSignInConfig config) {
     return MicrosoftSignIn(
       clientId: config.clientId,
       clientSecret: config.clientSecret,
