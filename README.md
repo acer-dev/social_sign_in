@@ -9,7 +9,7 @@ Current supported social provider:
 Add your library to `pubspec.yaml`
 ```yaml
 depedencies:
-    social_sign_in: ^0.0.2
+    social_sign_in: ^0.0.3
 ```
 ## Site Prepare
 ### Apple
