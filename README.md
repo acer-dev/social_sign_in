@@ -111,21 +111,21 @@ import 'package:social_sign_in/social_sign_in.dart';
 ### Login
 * Configure site information and trigger.
 ```dart
-SocialSignIn().initialSite(GitHubSignInConfig(
-    clientId: [YOUR GITHUB CLIENT ID],
-    clientSecret: [YOUR GITHUB CLIENT SECRET],
-    redirectUrl: [YOUR APP SERVER SIDE],
-), DefaultSignInPageInfo(
-    title: "Login with GitHub",
-    centerTitle: true,
-    clearCache: true
-));
+SocialSignIn().initialSite(
+        FacebookSignInConfig(
+          clientId: SocialPrivateData.facebookClientId,
+          clientSecret: SocialPrivateData.facebookClientSecret,
+          redirectUrl: SocialPrivateData.simpleRedirectUrl,
+        ),
+        null);
 
 OutlinedButton(
-    onPressed: () async {
-        final authResult = await SocialSignIn().signInSite(SocialPlatform.gitHub, context);
-    },
-    child: const Text('Login with github')
+onPressed: () async {
+    // Trigger the sign-in flow
+    final authResult = await SocialSignIn()
+        .signInSite(SocialPlatform.facebook, context);
+    printSignInResult(authResult);
+},
 ),
 ```
 * Configure and direct login. 

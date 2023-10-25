@@ -119,14 +119,14 @@ class _LoginPageState extends State<LoginPage> {
             onPressed: () async {
               // final authResult = await SocialSignIn().signInSite(SocialPlatform.google, context);
               SocialSignIn()
-                ..initialSite(
+                .initialSite(
                     GoogleSignInConfig(
                       clientId: SocialPrivateData.googleClientId,
                       clientSecret: SocialPrivateData.googleClientSecret,
                       redirectUrl: SocialPrivateData.simpleRedirectUrl,
                     ),
                     null)
-                ..signIn(context).then((value) => {printSignInResult(value)});
+                .signIn(context).then((value) => {printSignInResult(value)});
             },
           ),
           SignInButton(
