@@ -111,22 +111,21 @@ import 'package:social_sign_in/social_sign_in.dart';
 ### Login
 * Configure site information and trigger.
 ```dart
-SocialSignIn().initialSite(
-        FacebookSignInConfig(
-          clientId: SocialPrivateData.facebookClientId,
-          clientSecret: SocialPrivateData.facebookClientSecret,
-          redirectUrl: SocialPrivateData.simpleRedirectUrl,
-        ),
-        null);
+SocialSignIn().initialSite(FacebookSignInConfig(
+      clientId: SocialPrivateData.facebookClientId,
+      clientSecret: SocialPrivateData.facebookClientSecret,
+      redirectUrl: SocialPrivateData.simpleRedirectUrl,
+    ), null);
+
+
 
 OutlinedButton(
-onPressed: () async {
-    // Trigger the sign-in flow
-    final authResult = await SocialSignIn()
-        .signInSite(SocialPlatform.facebook, context);
-    printSignInResult(authResult);
-},
+    onPressed: () async {
+	final authResult = await SocialSignIn().signInSite(SocialPlatform.facebook, context);
+	printSignInResult(authResult);
+    }, child: const Text('Login with Facebook'),
 ),
+
 ```
 * Configure and direct login. 
 ```dart
