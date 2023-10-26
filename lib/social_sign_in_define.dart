@@ -1,7 +1,11 @@
 enum SocialPlatform {
+  ///https://developer.apple.com/account/resources/identifiers/list/bundleId
   apple,
+  ///https://developers.facebook.com/
   facebook,
+  ///https://console.cloud.google.com/
   google,
+  ///https://portal.azure.com/
   microsoft,
 }
 

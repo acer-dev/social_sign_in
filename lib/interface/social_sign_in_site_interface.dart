@@ -42,7 +42,7 @@ abstract class SocialSignInSiteConfig {
   List<String> get scope;
   set scope(List<String> value);
 }
-
+/// Authorization details from login in flow
 abstract class SocialSignInResultInterface {
   set accessToken(String value);
   String get accessToken;

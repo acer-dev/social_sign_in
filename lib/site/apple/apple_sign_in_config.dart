@@ -18,11 +18,14 @@ class AppleSignInConfig extends SocialSignInSiteConfig {
 
   @override
   List<String> scope;
-
-  AppleSignInConfig({
-    required this.clientId,
-    required this.redirectUrl,
-    this.hostUrl = "",
-    this.scope = const ["name", "email"],
-  });
+  /// Parameters required for web-based authentication flows
+  AppleSignInConfig(
+      {
+        ///the Identifier value shown on the detail view of the service after opening
+        ///it from social sign in console or developer
+        required this.clientId,
+        required this.redirectUrl,
+        this.hostUrl = "",
+        this.scope = const ["name", "email"],
+      });
 }
