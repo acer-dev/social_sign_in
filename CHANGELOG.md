@@ -1,3 +1,7 @@
+## 0.0.4
+
+* Updated document API
+
 ## 0.0.3
 
 * dart format

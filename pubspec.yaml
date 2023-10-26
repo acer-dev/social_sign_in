@@ -1,6 +1,6 @@
 name: social_sign_in
 description: A Flutter project that use webview to obtain an access token from a social provider.
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/acer-dev/social_sign_in
 repository: https://github.com/acer-dev/social_sign_in
 
