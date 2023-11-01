@@ -4,6 +4,11 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 import '../social_sign_in.dart';
 import '../social_sign_in_mobile.dart';
 
+/// PlatformInterface : Base class for platform interfaces
+/// Provides a static helper meth for ensuring that platform interfaces are implemented using
+/// extends instead of implements.
+/// The interface that implementations of [SocialSignInDesktop] and [SocialSignInMobile]
+/// for social sign in.
 abstract class SocialSignInPlatform extends PlatformInterface {
   /// Constructs a SocialSignInPlatform.
   SocialSignInPlatform() : super(token: _token);

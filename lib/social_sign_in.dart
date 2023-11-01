@@ -22,6 +22,7 @@ class SocialSignIn {
         .initialSite(profile, pageInfo ?? DefaultSignInPageInfo());
     return this;
   }
+
   /// Returns the credentials state for a given user by SocialSignInResultInterface
   /// Get the credentials and authorization of social login,
   /// it will convert an authorization code obtained via Social sign

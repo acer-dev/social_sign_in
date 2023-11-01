@@ -15,14 +15,14 @@ class FacebookSignInConfig extends SocialSignInSiteConfig {
 
   @override
   List<String> scope;
+
   /// Parameters required for web-based authentication flows
-  FacebookSignInConfig(
-      {
-        ///the Identifier value shown on the detail view of the service after opening
-        ///it from social sign in console or developer
-        required this.clientId,
-        required this.clientSecret,
-        required this.redirectUrl,
-        this.scope = const ["email", "public_profile"],
-      });
+  FacebookSignInConfig({
+    ///the Identifier value shown on the detail view of the service after opening
+    ///it from social sign in console or developer
+    required this.clientId,
+    required this.clientSecret,
+    required this.redirectUrl,
+    this.scope = const ["email", "public_profile"],
+  });
 }
