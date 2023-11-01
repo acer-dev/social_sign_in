@@ -1,5 +1,5 @@
 import '../../social_sign_in.dart';
-
+/// Authorization details from MicrosoftSign login
 class MicrosoftSignInResult extends SocialSignInResultInterface {
   MicrosoftSignInResult(
     this.status, {

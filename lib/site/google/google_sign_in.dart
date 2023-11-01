@@ -7,12 +7,16 @@ export 'google_sign_in_result.dart';
 export 'google_sign_in_config.dart';
 
 class GoogleSignIn extends SocialSignInSite {
+  ///Google App Id
   @override
   String clientId;
+  ///Google APP Secret
   @override
   String clientSecret;
+  ///Google App's Redirect Url
   @override
   String redirectUrl;
+  ///Google Permissions
   @override
   String scope;
 

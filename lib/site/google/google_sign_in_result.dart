@@ -1,5 +1,5 @@
 import '../../social_sign_in.dart';
-
+/// Authorization details from Google login
 class GoogleSignInResult extends SocialSignInResultInterface {
   GoogleSignInResult(
     this.status, {

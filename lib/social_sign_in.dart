@@ -27,12 +27,12 @@ class SocialSignIn {
   /// Get the credentials and authorization of social login,
   /// it will convert an authorization code obtained via Social sign
   /// into a session in your system.
-  ///
   Future<SocialSignInResultInterface> signInSite(
       SocialPlatform site, BuildContext context) {
     return SocialSignInPlatform.instance.signInSite(site, context);
   }
 
+  ///Configure and direct login
   Future<SocialSignInResultInterface> signIn(BuildContext context) {
     return SocialSignInPlatform.instance.signIn(context);
   }

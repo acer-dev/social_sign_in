@@ -7,12 +7,16 @@ export 'facebook_sign_in_result.dart';
 export 'facebook_sign_in_config.dart';
 
 class FacebookSignIn extends SocialSignInSite {
+  ///Facebook App Id
   @override
   String clientId;
+  ///Facebook APP Secret
   @override
   String clientSecret;
+  ///Facebook App's Redirect Url
   @override
   String redirectUrl;
+  ///Facebook Permissions
   @override
   String scope;
 

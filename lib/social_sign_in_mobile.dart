@@ -44,6 +44,7 @@ class SocialSignInMobile extends SocialSignInPlatform {
     }
   }
 
+  ///Configue site information and trigger for mobile
   @override
   Future<SocialSignInResultInterface> signInSite(
       SocialPlatform site, BuildContext context) async {

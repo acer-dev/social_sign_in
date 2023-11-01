@@ -7,15 +7,16 @@ export 'microsoft_sign_in_result.dart';
 export 'microsoft_sign_in_config.dart';
 
 class MicrosoftSignIn extends SocialSignInSite {
+  ///MicrosoftSignIn App Id
   @override
   String clientId;
-
+  ///MicrosoftSignIn APP Secret
   @override
   String clientSecret;
-
+  ///MicrosoftSignIn App's Redirect Url
   @override
   String redirectUrl;
-
+  ///MicrosoftSignIn Permissions
   @override
   String scope;
 

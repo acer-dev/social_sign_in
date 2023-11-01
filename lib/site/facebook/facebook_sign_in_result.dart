@@ -1,5 +1,5 @@
 import '../../social_sign_in.dart';
-
+/// Authorization details from Facebook login
 class FacebookSignInResult extends SocialSignInResultInterface {
   FacebookSignInResult(
     this.status, {

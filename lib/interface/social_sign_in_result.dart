@@ -21,7 +21,7 @@ class SocialSignInResult extends SocialSignInResultInterface {
   @override
   SignInResultStatus status;
 }
-
+/// A more specific Exception which describes any potential native errors that occur within the Sign in with Social Sign in.
 class SocialSignInFail extends SocialSignInResultInterface {
   SocialSignInFail({
     this.status = SignInResultStatus.failed,

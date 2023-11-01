@@ -8,12 +8,16 @@ export 'apple_sign_in_result.dart';
 export 'apple_sign_in_config.dart';
 
 class AppleSignIn extends SocialSignInSite {
+  ///Apple App Id
   @override
   String clientId;
+  ///Apple APP Secret
   @override
   String clientSecret = "";
+  ///Apple App's Redirect Url
   @override
   String redirectUrl;
+  ///Apple Permissions
   @override
   String scope = "";
 
