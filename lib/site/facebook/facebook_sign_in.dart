@@ -10,12 +10,15 @@ class FacebookSignIn extends SocialSignInSite {
   ///Facebook App Id
   @override
   String clientId;
+
   ///Facebook APP Secret
   @override
   String clientSecret;
+
   ///Facebook App's Redirect Url
   @override
   String redirectUrl;
+
   ///Facebook Permissions
   @override
   String scope;
@@ -75,6 +78,8 @@ class FacebookSignIn extends SocialSignInSite {
     );
   }
 
+  /// Your server should then daily verify the session with Facebook,
+  /// and revoke the session in your system if th authorization has been withdrawn on Facebook's side.
   @override
   Future<SocialSignInResultInterface> exchangeAccessToken(
       String authorizationCode) async {
@@ -103,6 +108,7 @@ class FacebookSignIn extends SocialSignInSite {
     }
   }
 
+  /// Configure Facebook Sign in instance
   factory FacebookSignIn.fromProfile(FacebookSignInConfig config) {
     return FacebookSignIn(
       clientId: config.clientId,

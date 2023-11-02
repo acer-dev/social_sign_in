@@ -10,12 +10,15 @@ class GoogleSignIn extends SocialSignInSite {
   ///Google App Id
   @override
   String clientId;
+
   ///Google APP Secret
   @override
   String clientSecret;
+
   ///Google App's Redirect Url
   @override
   String redirectUrl;
+
   ///Google Permissions
   @override
   String scope;
@@ -73,6 +76,8 @@ class GoogleSignIn extends SocialSignInSite {
     );
   }
 
+  /// Your server should then daily verify the session with Google,
+  /// and revoke the session in your system if th authorization has been withdrawn on Google's side.
   @override
   Future<SocialSignInResultInterface> exchangeAccessToken(
       String authorizationCode) async {
@@ -106,6 +111,7 @@ class GoogleSignIn extends SocialSignInSite {
     }
   }
 
+  /// Configure Google Sign in instance
   factory GoogleSignIn.fromProfile(GoogleSignInConfig config) {
     return GoogleSignIn(
         clientId: config.clientId,

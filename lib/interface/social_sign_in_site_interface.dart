@@ -56,6 +56,7 @@ abstract class SocialSignInResultInterface {
   set state(String value);
   String get state;
 }
+
 ///Constructor for sign in
 abstract class SocialSignInSite {
   String get clientId;
@@ -89,10 +90,11 @@ abstract class SocialSignInSite {
     throw UnimplementedError('exchangeAccessToken() has not been implemented.');
   }
 
+  ///Default signIn with webView flow
   Future<SocialSignInResultInterface> signIn(BuildContext context) async {
     stateCode = customStateCode() ?? generateString(10); // simple state code
     debugPrint("stateCode = $stateCode");
-    // Default signIn with webView flow
+
     var authorizedResult = await signInWithWebView(context);
     if (authorizedResult == null ||
         authorizedResult.toString().contains('access_denied')) {
@@ -107,6 +109,7 @@ abstract class SocialSignInSite {
     return await exchangeAccessToken(authorizedCode);
   }
 
+  ///The error will be thrown when the token exchange fails.
   Exception handleResponseBodyFail(Map<String, dynamic> body) {
     if (body.containsKey("error")) {
       return SocialSignInException(
@@ -117,6 +120,7 @@ abstract class SocialSignInSite {
     }
   }
 
+  ///The error will be thrown when the token exchange fails.
   Exception handleUnSuccessCodeFail(Response response) {
     var body =
         json.decode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;

@@ -24,9 +24,7 @@ abstract class SocialSignInPlatform extends PlatformInterface {
 
   static final Map<SocialPlatform, SocialSignInSite> _siteList = {};
 
-  ///
-  ///
-  ///
+  /// Identify the platform being used.
   static SocialSignInSite? getSite(SocialPlatform site) => _siteList[site];
   static void setSite(SocialPlatform site, SocialSignInSite data) =>
       _siteList[site] = data;
@@ -41,11 +39,19 @@ abstract class SocialSignInPlatform extends PlatformInterface {
     _instance = instance;
   }
 
+  /// Returns the credentials state for a given user by SocialSignInResultInterface
+  /// Get the credentials and authorization of social login,
+  /// it will convert an authorization code obtained via Social sign
+  /// into a session in your system.
+  /// Throw exception when errors happen.
   Future<SocialSignInResultInterface> signInSite(
       SocialPlatform site, BuildContext context) async {
     throw UnimplementedError('signIn() has not been implemented.');
   }
 
+  ///Configure and direct login
+  ///An SocialSignInFail which will be thrown if exceptions happen,
+  ///a more specific reason will show in [errorMessage]
   Future<SocialSignInResultInterface> signIn(BuildContext context) async {
     try {
       if (lastSite == null)
@@ -60,6 +66,7 @@ abstract class SocialSignInPlatform extends PlatformInterface {
     }
   }
 
+  //Configure the instance
   void initialSite(
       SocialSignInSiteConfig config, SocialSignInPageInfo pageInfo) {
     throw UnimplementedError('initialSite() has not been implemented.');

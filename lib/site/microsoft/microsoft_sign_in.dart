@@ -10,12 +10,15 @@ class MicrosoftSignIn extends SocialSignInSite {
   ///MicrosoftSignIn App Id
   @override
   String clientId;
+
   ///MicrosoftSignIn APP Secret
   @override
   String clientSecret;
+
   ///MicrosoftSignIn App's Redirect Url
   @override
   String redirectUrl;
+
   ///MicrosoftSignIn Permissions
   @override
   String scope;
@@ -75,6 +78,8 @@ class MicrosoftSignIn extends SocialSignInSite {
     );
   }
 
+  /// Your server should then daily verify the session with Microsoft,
+  /// and revoke the session in your system if th authorization has been withdrawn on Microsoft's side.
   @override
   Future<SocialSignInResultInterface> exchangeAccessToken(
       String authorizationCode) async {
@@ -107,6 +112,7 @@ class MicrosoftSignIn extends SocialSignInSite {
     }
   }
 
+  /// Configure Microsoft Sign in instance
   factory MicrosoftSignIn.fromProfile(MicrosoftSignInConfig config) {
     return MicrosoftSignIn(
       clientId: config.clientId,

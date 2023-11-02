@@ -1,4 +1,5 @@
 import '../../social_sign_in.dart';
+
 /// Authorization details from Apple login
 class AppleSignInResult extends SocialSignInResultInterface {
   AppleSignInResult(
