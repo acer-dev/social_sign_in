@@ -1,6 +1,6 @@
 ## 0.0.5
 
-* 
+* Updated document API
 
 ## 0.0.4
 

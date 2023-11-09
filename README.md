@@ -1,6 +1,6 @@
 # social_sign_in
 
-A Social Sign In Flutter project on Android, iOS, MacOS and Windows.
+A Social Sign In Flutter plug on Android, iOS, MacOS and Windows.
 Current supported social provider: 
    Apple, Facebook, Google, Microsoft.
 
@@ -12,7 +12,14 @@ depedencies:
     social_sign_in: ^0.0.5
 ```
 ## Site Prepare
-### Apple
+### Sign in with Apple
+
+1. [Register an App ID](https://developer.apple.com/account/resources/identifiers/list/bundleId) : Set the Description and Bundle ID, and select the Sign In with Apple capability
+2. Add sign in **capability** and restart the app in xcode. (Runner (file browser side bar) -> Targets -> Runner -> Signing & Capabilities)
+3. [Create a Service ID](https://developer.apple.com/account/resources/identifiers/list/serviceId) and enable service **Sign in with Apple** (configure it later.) 
+4. [Create a key](https://developer.apple.com/account/resources/authkeys/list) and Enable Service **Sign In with Apple**
+5. Specify your app's Service Id you just create in the project 
+
 * Ref: [FlutterFire Social Authentication](https://firebase.flutter.dev/docs/auth/social/#apple)
 
 #### Native on Android
@@ -89,14 +96,26 @@ exports.callbacks_sign_in_with_apple = functions.https.onRequest(async (request,
 3. Configure in Apple developer site setting service ids with **redirect URL**, **redirect domain**, and **host page domain**.
 
 
-### Microsoft
+###  Sign in with Microsoft
+1. Login Azure protal and create a new **App Registration**
+2. Pick **Accounts in andy organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts(eg. Skype, Xbox)** to allow for sign-ins from both organization and public accounts
+3. Add new client serect in **Certificates and secrets**
+4. Specify your app's client ID, ClientSecret you just create in the project
+
 * Ref: [akamai Microsoft Online social login guide](https://techdocs.akamai.com/identity-cloud/docs/the-microsoft-online-social-configuration-guide)
 * In Step 3. click Azure Active Directory, and then, in the navigation panel, click App registrations.
 
-### Google
+###  Sign in with Google
+1. Create authorization credentials in Google Console
+2. Specify your app's client ID, ClientSecret you just create in the project
+
 * Ref: [FlutterFire Social Authentication](https://firebase.flutter.dev/docs/auth/social/#google)
 
-### Facebook
+###  Sign in with Facebook
+1. Start the app creation process in Meta for Developers
+2. Choose a use case which determines perimssions, products and APIs are available to your app.
+3. Set your app name and email
+4. Specify your app's client ID,Client Secret you just create in the project 
 * Ref: [FlutterFire Social Authentication](https://firebase.flutter.dev/docs/auth/social/#google)
 
 
