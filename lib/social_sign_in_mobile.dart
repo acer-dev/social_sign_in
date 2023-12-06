@@ -4,6 +4,7 @@ import 'interface/social_sign_in_platform_interface.dart';
 
 /// An implementation of [SocialSignInPlatform] that uses method channels.
 class SocialSignInMobile extends SocialSignInPlatform {
+  ///Configure the instance
   @override
   void initialSite(
       SocialSignInSiteConfig config, SocialSignInPageInfo pageInfo) {
@@ -44,7 +45,7 @@ class SocialSignInMobile extends SocialSignInPlatform {
     }
   }
 
-  ///Configue site information and trigger for mobile
+  ///Configure site information and trigger for mobile
   @override
   Future<SocialSignInResultInterface> signInSite(
       SocialPlatform site, BuildContext context) async {
