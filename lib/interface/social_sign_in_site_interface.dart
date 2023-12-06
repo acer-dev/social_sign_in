@@ -81,10 +81,13 @@ abstract class SocialSignInSite {
   String generateNonce([int length = 32]) => _getRandomString(length,
       '0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._');
 
+  @protected
   Future<dynamic> signInWithWebView(BuildContext context) async {
     throw UnimplementedError('signInWithWebView() has not been implemented.');
   }
 
+  ///To exchange an authorization code for an access token
+  @protected
   Future<SocialSignInResultInterface> exchangeAccessToken(
       String authorizationCode) async {
     throw UnimplementedError('exchangeAccessToken() has not been implemented.');
