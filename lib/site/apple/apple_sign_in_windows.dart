@@ -65,7 +65,7 @@ class AppleSignInWindows extends AppleSignIn {
     return AppleSignInResult(SignInResultStatus.ok,
         state: stateCode, nonce: rawNonce, idToken: authorizedResult);
   }
-
+  /// Parameters required for web-based authentication flows
   factory AppleSignInWindows.fromProfile(AppleSignInConfig config) {
     return AppleSignInWindows(
       clientId: config.clientId,

@@ -9,6 +9,7 @@ class FacebookSignInResult extends SocialSignInResultInterface {
     this.state = "",
   });
 
+  ///An app access token or an access token for a developer of the app
   @override
   String accessToken;
 

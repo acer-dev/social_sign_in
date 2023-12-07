@@ -77,7 +77,7 @@ class GoogleSignIn extends SocialSignInSite {
   }
 
   /// Your server should then daily verify the session with Google,
-  /// and revoke the session in your system if th authorization has been withdrawn on Google's side.
+  /// and revoke the session in your system if the authorization has been withdrawn on Google's side.
   @override
   Future<SocialSignInResultInterface> exchangeAccessToken(
       String authorizationCode) async {
@@ -111,7 +111,7 @@ class GoogleSignIn extends SocialSignInSite {
     }
   }
 
-  /// Configure Google Sign in instance
+  /// Parameters required for web-based authentication flows
   factory GoogleSignIn.fromProfile(GoogleSignInConfig config) {
     return GoogleSignIn(
         clientId: config.clientId,

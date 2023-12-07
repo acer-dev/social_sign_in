@@ -79,7 +79,7 @@ class MicrosoftSignIn extends SocialSignInSite {
   }
 
   /// Your server should then daily verify the session with Microsoft,
-  /// and revoke the session in your system if th authorization has been withdrawn on Microsoft's side.
+  /// and revoke the session in your system if the authorization has been withdrawn on Microsoft's side.
   @override
   Future<SocialSignInResultInterface> exchangeAccessToken(
       String authorizationCode) async {
@@ -112,7 +112,7 @@ class MicrosoftSignIn extends SocialSignInSite {
     }
   }
 
-  /// Configure Microsoft Sign in instance
+  /// Parameters required for web-based authentication flows
   factory MicrosoftSignIn.fromProfile(MicrosoftSignInConfig config) {
     return MicrosoftSignIn(
       clientId: config.clientId,

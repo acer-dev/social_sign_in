@@ -9,6 +9,7 @@ export 'apple_sign_in_config.dart';
 
 class AppleSignIn extends SocialSignInSite {
   ///Apple App Id
+  ///The developer's client identifier, as provided by WWDR (Worldwide Developer Relations)
   @override
   String clientId;
 
@@ -17,10 +18,12 @@ class AppleSignIn extends SocialSignInSite {
   String clientSecret = "";
 
   ///Apple App's Redirect Url
+  ///The URI to which the authorization redirects. It must include a domain name, and can't be an IP address or localhost.
   @override
   String redirectUrl;
 
   ///Apple Permissions
+  ///The amount of user information requested from Apple. Valid values are named and email. You can request one, both, or none.
   @override
   String scope = "";
 
@@ -81,7 +84,7 @@ class AppleSignIn extends SocialSignInSite {
     }
   }
 
-  /// Configure Apple Sign in instance
+  /// Parameters required for web-based authentication flows
   factory AppleSignIn.fromProfile(AppleSignInConfig config) {
     var appleSignIn = AppleSignIn(
       clientId: config.clientId,

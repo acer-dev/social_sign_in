@@ -8,6 +8,7 @@ export 'facebook_sign_in_config.dart';
 
 class FacebookSignIn extends SocialSignInSite {
   ///Facebook App Id
+  ///The ID of your app, found in your app's dashboard.
   @override
   String clientId;
 
@@ -16,10 +17,12 @@ class FacebookSignIn extends SocialSignInSite {
   String clientSecret;
 
   ///Facebook App's Redirect Url
+  ///The URL that you want to redirect the person logging in back to.
   @override
   String redirectUrl;
 
   ///Facebook Permissions
+  ///A list of permissions to request from the person using your app
   @override
   String scope;
 
@@ -79,7 +82,7 @@ class FacebookSignIn extends SocialSignInSite {
   }
 
   /// Your server should then daily verify the session with Facebook,
-  /// and revoke the session in your system if th authorization has been withdrawn on Facebook's side.
+  /// and revoke the session in your system if the authorization has been withdrawn on Facebook's side.
   @override
   Future<SocialSignInResultInterface> exchangeAccessToken(
       String authorizationCode) async {
@@ -108,7 +111,7 @@ class FacebookSignIn extends SocialSignInSite {
     }
   }
 
-  /// Configure Facebook Sign in instance
+  /// Parameters required for web-based authentication flows
   factory FacebookSignIn.fromProfile(FacebookSignInConfig config) {
     return FacebookSignIn(
       clientId: config.clientId,

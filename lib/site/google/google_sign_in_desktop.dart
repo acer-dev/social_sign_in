@@ -41,6 +41,7 @@ class GoogleSignInDesktop extends GoogleSignIn {
     );
   }
 
+  /// Parameters required for web-based authentication flows
   factory GoogleSignInDesktop.fromProfile(GoogleSignInConfig config) {
     return GoogleSignInDesktop(
         clientId: config.clientId,

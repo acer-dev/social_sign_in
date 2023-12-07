@@ -41,6 +41,7 @@ class MicrosoftSignInDesktop extends MicrosoftSignIn {
     );
   }
 
+  /// Parameters required for web-based authentication flows
   factory MicrosoftSignInDesktop.fromProfile(MicrosoftSignInConfig config) {
     return MicrosoftSignInDesktop(
       clientId: config.clientId,

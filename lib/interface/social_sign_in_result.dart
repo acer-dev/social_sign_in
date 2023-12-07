@@ -32,18 +32,23 @@ class SocialSignInFail extends SocialSignInResultInterface {
     this.state = "",
   });
 
+  ///Application requests an access token from the social media server, extracts a token from the response, and sends the token to the Server API that you want to access.
   @override
   String accessToken;
 
+  ///Handle Errors whose resolutions require more steps than can be easily described in an error message.
   @override
   String errorMessage;
 
+  ///A JSON web token containing the user's identity information.
   @override
   String idToken;
 
+  ///The current status of the authorization request.
   @override
   SignInResultStatus status;
 
+  ///The current state of the authorization request.
   @override
   String state;
 }

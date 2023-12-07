@@ -12,9 +12,11 @@ class AppleSignInResult extends SocialSignInResultInterface {
   @override
   String accessToken = "";
 
+  ///The returned error message.
   @override
   String errorMessage = "";
 
+  ///A JSON web token containing the user's identity information.
   @override
   String idToken;
 
@@ -23,6 +25,7 @@ class AppleSignInResult extends SocialSignInResultInterface {
 
   String nonce;
 
+  ///The state contained in the Authorize URL.
   @override
   String state;
 }
