@@ -46,9 +46,9 @@ flutter:
       macos:
         dartPluginClass: SocialSignInDesktop
       ios:
-        dartPluginClass: WebKitWebViewPlatform
+        dartPluginClass: SocialSignInMobile
       android:
-        dartPluginClass: AndroidWebViewPlatform
+        dartPluginClass: SocialSignInMobile
 
 
   # To add assets to your plugin package, add an assets section, like this:
