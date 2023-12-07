@@ -1,8 +1,8 @@
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:social_sign_in/social_sign_in.dart';
-import 'package:social_sign_in/interface/social_sign_in_platform_interface.dart';
-import 'package:social_sign_in/social_sign_in_mobile.dart';
+import 'package:social_sign_in/src/social_sign_in.dart';
+import 'package:social_sign_in/src/interface/social_sign_in_platform_interface.dart';
+import 'package:social_sign_in/src/social_sign_in_mobile.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 class MockSocialSignInResult implements SocialSignInResultInterface {
