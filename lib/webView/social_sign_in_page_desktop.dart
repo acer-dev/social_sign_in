@@ -2,6 +2,7 @@ import 'package:desktop_webview_window/desktop_webview_window.dart';
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
 
+@protected
 class SocialSignInPageDesktop extends StatefulWidget {
   final String url;
   final String redirectUrl;
