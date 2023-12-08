@@ -40,7 +40,7 @@ class AppleSignIn extends SocialSignInSite {
     return "";
   }
 
-  ///calculate hash from string or binary.
+  ///Calculate hash from string or binary.
   String sha256ofString(String input) {
     final bytes = utf8.encode(input);
     final digest = sha256.convert(bytes);

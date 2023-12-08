@@ -7,19 +7,26 @@ export 'google_sign_in_result.dart';
 export 'google_sign_in_config.dart';
 
 class GoogleSignIn extends SocialSignInSite {
-  ///Google App Id
+  ///Google App Id.
+  ///The client ID for your application.
   @override
   String clientId;
 
   ///Google APP Secret
+  ///The client secret obtained from the API Console [Credential page].
   @override
   String clientSecret;
 
-  ///Google App's Redirect Url
+  ///Google App's Redirect Url.
+  ///Determines where the API server redirects the user after the user completes the authorization flow.
+  ///The value must exactly match one of the authorized redirect URIs for the OAuth 2.0 Client,
+  ///which you configured in your client's API Console [Credentials page](https://console.cloud.google.com/apis/credentials)
   @override
   String redirectUrl;
 
   ///Google Permissions
+  ///Scopes enable your application to only request access to the resources that it needs while also enabling users to control
+  ///the amount of access that they grant to your application.
   @override
   String scope;
 

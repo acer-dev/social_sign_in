@@ -16,7 +16,7 @@ class AppleSignInConfig extends SocialSignInSiteConfig {
   @override
   String redirectUrl;
 
-  /// host url for windows.
+  /// Host url for windows.
   String hostUrl;
 
   ///The amount of user information requested from Apple. Valid values are named and email. You can request one, both, or none.

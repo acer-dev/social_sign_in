@@ -5,15 +5,18 @@ class FacebookSignInConfig extends SocialSignInSiteConfig {
   @override
   SocialPlatform get site => SocialPlatform.facebook;
 
+  ///The ID of your app, found in your app's dashboard.
   @override
   String clientId;
 
   @override
   String clientSecret;
 
+  ///The URL that you want to redirect the person logging in back to.
   @override
   String redirectUrl;
 
+  ///A list of permissions to request from the person using your app
   @override
   List<String> scope;
 

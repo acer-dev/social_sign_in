@@ -5,6 +5,7 @@ class MicrosoftSignInConfig extends SocialSignInSiteConfig {
   @override
   SocialPlatform get site => SocialPlatform.microsoft;
 
+  ///Application ID created in Azure Portal
   @override
   String clientId;
 

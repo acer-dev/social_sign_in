@@ -7,7 +7,8 @@ export 'microsoft_sign_in_result.dart';
 export 'microsoft_sign_in_config.dart';
 
 class MicrosoftSignIn extends SocialSignInSite {
-  ///MicrosoftSignIn App Id
+  ///MicrosoftSignIn App Id.
+  ///Application ID created in Azure Portal
   @override
   String clientId;
 
@@ -15,11 +16,14 @@ class MicrosoftSignIn extends SocialSignInSite {
   @override
   String clientSecret;
 
-  ///MicrosoftSignIn App's Redirect Url
+  ///A redirect URI is the location where the Microsoft identity platform redirects a user's client
+  ///and sends security tokens after authentication.
   @override
   String redirectUrl;
 
-  ///MicrosoftSignIn Permissions
+  ///MicrosoftSignIn Permissions.
+  ///Scopes and permissions in the Microsoft identity platform set to admin restricted.
+  ///https://learn.microsoft.com/en-us/graph/permissions-reference
   @override
   String scope;
 
