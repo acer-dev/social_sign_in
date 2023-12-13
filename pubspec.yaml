@@ -1,5 +1,5 @@
 name: social_sign_in
-description: A Flutter plugin that use webview to obtain an access token from a social provider.
+description: A Flutter plugin that helps to sign in with Facebook, Google, Microsoft and Apple.
 version: 0.0.5
 homepage: https://github.com/acer-dev/social_sign_in
 repository: https://github.com/acer-dev/social_sign_in
