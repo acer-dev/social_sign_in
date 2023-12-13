@@ -14,7 +14,7 @@ part '../src/interface/social_sign_in_site_interface.dart';
 part '../src/interface/social_sign_in_error.dart';
 part '../src/interface/social_sign_in_result.dart';
 
-///Wrapper class providing the methods to interact with Social Sign in
+///Wrapper class providing the methods to interact with Social Sign-in.
 class SocialSignIn {
   ///Configure the SocialSignInPlatform instance
   SocialSignIn initialSite(

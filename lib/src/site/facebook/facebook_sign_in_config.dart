@@ -1,6 +1,6 @@
 import '../../social_sign_in.dart';
 
-///Configure Facebook sign-in parameters required for web-based authentication flows
+///Configure Facebook Sign-in parameters required for web-based authentication flows.
 class FacebookSignInConfig extends SocialSignInSiteConfig {
   @override
   SocialPlatform get site => SocialPlatform.facebook;

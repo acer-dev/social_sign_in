@@ -1,6 +1,6 @@
 import '../../social_sign_in.dart';
 
-///Configure Apple Sign-in parameters required for web-based authentication flows
+///Configure Apple Sign-in parameters required for web-based authentication flows.
 class AppleSignInConfig extends SocialSignInSiteConfig {
   @override
   SocialPlatform get site => SocialPlatform.apple;

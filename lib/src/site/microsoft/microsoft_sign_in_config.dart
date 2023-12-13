@@ -1,6 +1,6 @@
 import '../../social_sign_in.dart';
 
-///Configure Microsoft sign-in parameters required for web-based authentication flows
+///Configure Microsoft Sign-in parameters required for web-based authentication flows.
 class MicrosoftSignInConfig extends SocialSignInSiteConfig {
   @override
   SocialPlatform get site => SocialPlatform.microsoft;

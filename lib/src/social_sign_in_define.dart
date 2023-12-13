@@ -1,4 +1,4 @@
-///Representing different platforms of social sign-in.
+///Representing different platforms of social Sign-in.
 enum SocialPlatform {
   ///https://developer.apple.com/account/resources/identifiers/list/bundleId
   apple,

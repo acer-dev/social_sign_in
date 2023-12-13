@@ -1,6 +1,6 @@
 import '../../social_sign_in.dart';
 
-///Configure Google sign-in parameters required for web-based authentication flows
+///Configure Google Sign-in parameters required for web-based authentication flows.
 class GoogleSignInConfig extends SocialSignInSiteConfig {
   @override
   SocialPlatform get site => SocialPlatform.google;
