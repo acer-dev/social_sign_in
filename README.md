@@ -1,57 +1,51 @@
 # social_sign_in
 
-A Flutter plugin that helps to sign in with Facebook, Google, Microsoft and Apple.
+A Flutter plugin that helps to sign in with Facebook, Google, Microsoft and Apple using Firebase.
 
 ## Getting started
 
 Add the library to your project.
 ```yaml
-depedencies:
+dependencies:
     social_sign_in: ^0.0.5
 ```
 
-## Configure social authentication with Firebase
+## Firebase setup
 
-Firebase Authentication provides backend services & easy-to-use SDKs to authenticate users to your app.
-
-Follow the upcoming steps to configure.
+Follow the steps below to configure.
 
 1. Sign into [Firebase console](https://console.firebase.google.com/u/0/) using your Google account.
 2. Create a project in Firebase console.
 3. Under your project, click **Authentication** to enable the function.
 4. Before enable each provider, you need to create an app separately in the Meta for Developers, Google Console, Microsoft Azure and Apple Developer.
-5. Navigate to the **Sign-in Method** tab to enable each provider as a sign-in provider.
-* Facebook Sign-In provider is enable on the Firebase Console with the Facebook App ID and Secret set.
-* Most configuration of Google is alread setup when useing Google Sign-In with Firebase.
-* Microsoft Sign-In provider is enable on the Firebase Console with application (client) ID and client secrets.
-* Apple Sign-In provider is enable on the Firebase Console with TEAM ID.
-6. Configure Redirect URL back to each console if you need.
+5. Navigate to the **Sign-in Method** tab to enable providers you want to support as a sign-in provider.
+6. Except Google Sign-in, you need to configure the Redirect URL  on the console website of social providers you want to support as the URL generated when you enable specific social provider
 
 ###  Sign in with Facebook
 
 1. Start the app creation process in Meta for Developers.
-2. Choose a use case which determines perimssions, products and APIs are available to your app.
+2. Choose a use case which determines permissions, products and APIs are available to your app.
 3. Set your app name and email.
-4. Specify your app's client ID,Client Secret you just create in the project .
+4. Specify your app's Client ID, Client Secret you just created in the project .
 * Ref: [FlutterFire Social Authentication](https://firebase.flutter.dev/docs/auth/social/#facebook)
 
 ###  Sign in with Google
 
 1. Create authorization credentials in Google Console.
-2. Specify your app's client ID, ClientSecret you just create in the project.
+2. Specify your app's Client ID, Client Secret you just created in the project.
 
 * Ref: [FlutterFire Social Authentication](https://firebase.flutter.dev/docs/auth/social/#google)
 
 ###  Sign in with Microsoft
-1. Login Azure protal and click Azure Active Directory, and then, in the navigation panel, click **App registrations** to register an application.
-2. Enter your **Application Name** and pick **Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts(eg. Skype, Xbox)** to allow for sign-in from both organization and public accounts. 
+1. Login Azure portal and click Azure Active Directory, and then, in the navigation panel, click **App registrations** to register an application.
+2. Enter your **Application Name** and pick **Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts(eg. Skype, Xbox)** to allow for Sign-in from both organization and public accounts. 
 3. Choose **Web** as the Redirect URI and enter the Redirect URI in Firebase Console under Authentication > Sign-In Method > Enable Microsoft provider.
-4. Add new client serect in **Certificates and secrets**.
-5. Specify your app's client ID, ClientSecret you just create in the project.
+4. Add new client secret in **Certificates and secrets**.
+5. Specify your app's Client ID, Client Secret you just created in the project.
 
 * Ref: [Register an application with the Microsoft identity platform](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app)
 
-6. For some reason, Microsoft failed to obtain the Firebase token. We need to verify that the access token has been successfully acquired to get the Firebase token.
+6. For some uncertain reasons, it may be failed to obtain the Firebase token when Sign-in with Microsoft account. It is required to implement the function  to validate that the access token has been successfully acquired to get the Firebase token. You can refer to following codes.
 
 * Deploy an API on **Firebase Cloud Function** to validate access token like:
     ```js
@@ -96,11 +90,11 @@ Follow the upcoming steps to configure.
 ### Sign in with Apple
 
 1. As you build in Xcode, it will automatically create an app in the Apple Developer [Certificates, Identifiers & Profiles](https://developer.apple.com/account/resources/identifiers/list/bundleId). If it's not, create it yourself, set the Description and Bundle ID. 
-2. Add the **Sign In with Apple** capability and restart the app in xcode. (Runner (file browser side bar) -> Targets -> Runner -> Signing & Capabilities).
+2. Add the **Sign In with Apple** capability and restart the app in Xcode. (Runner (file browser side bar) -> Targets -> Runner -> Signing & Capabilities).
 3. [Create a Service ID](https://developer.apple.com/account/resources/identifiers/list/serviceId) and enable service **Sign In With Apple** (configure it later). 
 4. [Create a key](https://developer.apple.com/account/resources/authkeys/list) and Enable Service **Sign In With Apple**.
 5. Navigate to the **Sign-In Method** tab to enable Apple provider as a sign-in provider in Firebase console.
-6. Enter the **Service ID** (created in step 3), **Team ID**, **Key ID**, and **Private Key** (created in step 4, download the key as a .p8 file). 
+6. Enter the **Service ID** (created in step 3), **Team ID**, **Key ID**, and **Private Key** (created in step 4, download the key as a file with .p8 file extension format). 
 
 7. In order to sign in with Apple on Android and Windows devices, additional configuration is required.
 
