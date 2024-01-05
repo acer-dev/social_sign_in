@@ -13,6 +13,7 @@ class SocialSignInDesktop extends SocialSignInPlatform {
   static void registerWith() {
     SocialSignInPlatform.instance = SocialSignInDesktop();
   }
+
   ///Configure the instance
   @override
   void initialSite(
@@ -58,6 +59,7 @@ class SocialSignInDesktop extends SocialSignInPlatform {
       rethrow;
     }
   }
+
   ///Configure site information and trigger for desktop
   @override
   Future<SocialSignInResultInterface> signInSite(

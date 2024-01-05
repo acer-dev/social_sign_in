@@ -3,6 +3,7 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import '../social_sign_in.dart';
 import '../social_sign_in_mobile.dart';
+
 /// PlatformInterface : Base class for platform interfaces
 /// Provides a static helper method for ensuring that platform interfaces are implemented using
 /// extends instead of implements.

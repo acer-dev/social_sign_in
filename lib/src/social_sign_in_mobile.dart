@@ -8,6 +8,7 @@ class SocialSignInMobile extends SocialSignInPlatform {
   static void registerWith() {
     SocialSignInPlatform.instance = SocialSignInMobile();
   }
+
   ///Configure the instance
   @override
   void initialSite(

@@ -12,6 +12,7 @@ enum SocialPlatform {
   ///https://portal.azure.com/
   microsoft,
 }
+
 ///Representing the status after login.
 enum SignInResultStatus {
   /// The login was successful.

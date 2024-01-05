@@ -11,13 +11,13 @@
 
 export 'package:social_sign_in/src/social_sign_in.dart'
     show
-    SocialSignIn,
-    AppleSignInConfig,
-    FacebookSignInConfig,
-    GoogleSignInConfig,
-    MicrosoftSignInConfig,
-    SignInResultStatus,
-    SocialSignInResultInterface;
+        SocialSignIn,
+        AppleSignInConfig,
+        FacebookSignInConfig,
+        GoogleSignInConfig,
+        MicrosoftSignInConfig,
+        SignInResultStatus,
+        SocialSignInResultInterface;
 export 'package:social_sign_in/src/social_sign_in_define.dart';
 export 'package:social_sign_in/src/social_sign_in_desktop.dart';
 export 'package:social_sign_in/src/social_sign_in_mobile.dart';

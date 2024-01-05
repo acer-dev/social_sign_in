@@ -1,11 +1,15 @@
 part of '../social_sign_in.dart';
+
 abstract class SocialSignInPageInfo {
   ///A browser parameter used for recording purposes by the respective website.
   String? get userAgent;
+
   ///Indicating whether to clear the webpage cache
   bool get clearCache => true;
+
   ///The heading of the embedded page
   String get title => "";
+
   ///Indicating whether to center the heading
   bool? get centerTitle;
 }
@@ -34,6 +38,7 @@ class DefaultSignInPageInfo extends SocialSignInPageInfo {
     this.userAgent,
   });
 }
+
 /// Configure site information
 abstract class SocialSignInSiteConfig {
   SocialPlatform get site;
@@ -52,15 +57,19 @@ abstract class SocialSignInResultInterface {
   ///Application requests an access token from the social media server, extracts a token from the response, and sends the token to the Server API that you want to access.
   set accessToken(String value);
   String get accessToken;
+
   ///A JSON web token containing the user's identity information.
   set idToken(String value);
   String get idToken;
+
   ///The current status of the authorization request.
   set status(SignInResultStatus value);
   SignInResultStatus get status;
+
   ///Handle Errors whose resolutions require more steps than can be easily described in an error message.
   set errorMessage(String value);
   String get errorMessage;
+
   ///The current state of the authorization request.
   set state(String value);
   String get state;

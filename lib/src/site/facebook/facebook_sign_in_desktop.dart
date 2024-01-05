@@ -40,6 +40,7 @@ class FacebookSignInDesktop extends FacebookSignIn {
       ),
     );
   }
+
   /// Parameters required for web-based authentication flows
   factory FacebookSignInDesktop.fromProfile(FacebookSignInConfig config) {
     return FacebookSignInDesktop(
