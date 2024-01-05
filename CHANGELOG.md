@@ -1,3 +1,7 @@
+## 0.0.6
+
+* Updated document to include revised API for improved functionality, clarified instructions in the README file.
+
 ## 0.0.5
 
 * Updated document API

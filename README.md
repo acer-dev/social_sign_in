@@ -7,7 +7,7 @@ A Flutter plugin that helps to sign in with Facebook, Google, Microsoft and Appl
 Add the library to your project.
 ```yaml
 dependencies:
-    social_sign_in: ^0.0.5
+    social_sign_in: ^0.0.6
 ```
 
 ## Firebase setup

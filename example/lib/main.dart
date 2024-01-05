@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sign_in_button/sign_in_button.dart';
 import 'package:social_sign_in/social_sign_in.dart';
 import 'package:social_sign_in_example/private_data.dart';
